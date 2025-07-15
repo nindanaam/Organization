@@ -69,14 +69,14 @@ jobs:
       - id: plan
         run: |
           echo "terraform plan"
-          ${GITHUB_WORKSPACE}/tf-wrapper.sh plan "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "prj-b-cicd-wif-gh-d710" "FILESYSTEM" "GITHUB"
+          ${GITHUB_WORKSPACE}/tf-wrapper.sh plan "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "${PROJECT_ID}" "FILESYSTEM" "GITHUB"
 
       - id: validate
         run: |
           echo "validate"
-          ${GITHUB_WORKSPACE}/tf-wrapper.sh validate "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "prj-b-cicd-wif-gh-d710" "FILESYSTEM" "GITHUB"
+          ${GITHUB_WORKSPACE}/tf-wrapper.sh validate "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "${PROJECT_ID}" "FILESYSTEM" "GITHUB"
 
       - id: apply
         run: |
           echo "terraform apply"
-          ${GITHUB_WORKSPACE}/tf-wrapper.sh apply "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "prj-b-cicd-wif-gh-d710" "FILESYSTEM" "GITHUB"
+          ${GITHUB_WORKSPACE}/tf-wrapper.sh apply "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "${PROJECT_ID}" "FILESYSTEM" "GITHUB"

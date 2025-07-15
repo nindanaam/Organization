@@ -22,7 +22,7 @@ on:
 
 env:
   PROJECT_ID: "prj-b-cicd-wif-gh-d710"
-  TF_BACKEND: ${{ secrets.TF_BACKEND }}
+  TF_BACKEND: ""bkt-prj-b-seed-tfstate-b327""
   TF_VAR_gh_token: "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"
   TF_IN_AUTOMATION: "true"
 
@@ -66,12 +66,12 @@ jobs:
 
       - id: plan-validate-all
         run: |
-          ${GITHUB_WORKSPACE}/tf-wrapper.sh plan_validate_all "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "${PROJECT_ID}" "FILESYSTEM" "GITHUB"
+          ${GITHUB_WORKSPACE}/tf-wrapper.sh plan_validate_all "${GITHUB_REF_NAME}" "${GITHUB_WORKSPACE}/policy-library" "prj-b-cicd-wif-gh-d710" "FILESYSTEM" "GITHUB"
 
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: "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"
           script: |
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,

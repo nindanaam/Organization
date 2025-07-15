@@ -42,8 +42,9 @@ jobs:
         uses: "google-github-actions/auth@v2"
         with:
           token_format: "access_token"
-          workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          workload_identity_provider: 'projects/845905647663/locations/global/workloadIdentityPools/github/providers/my-repo'
+          service_account: 'project-service-account@prj-b-cicd-wif-gh-d710.iam.gserviceaccount.com'
+
 
       - uses: "google-github-actions/setup-gcloud@v2"
         with:

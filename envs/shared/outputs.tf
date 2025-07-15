@@ -59,10 +59,10 @@ output "org_secrets_project_id" {
   description = "The org secrets project ID"
 }
 
-output "common_kms_project_id" {
-  value       = module.common_kms.project_id
-  description = "The org Cloud Key Management Service (KMS) project ID"
-}
+# output "common_kms_project_id" {
+#   value       = module.common_kms.project_id
+#   description = "The org Cloud Key Management Service (KMS) project ID"
+# }
 
 output "interconnect_project_id" {
   value       = module.interconnect.project_id

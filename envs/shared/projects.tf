@@ -100,36 +100,36 @@ module "org_billing_export" {
   Project for Common-folder KMS
 *****************************************/
 
-module "common_kms" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 18.0"
+# module "common_kms" {
+#   source  = "terraform-google-modules/project-factory/google"
+#   version = "~> 18.0"
 
-  random_project_id        = true
-  random_project_id_length = 4
-  default_service_account  = "deprivilege"
-  name                     = "${local.project_prefix}-c-kms"
-  org_id                   = local.org_id
-  billing_account          = local.billing_account
-  folder_id                = google_folder.common.id
-  deletion_policy          = var.project_deletion_policy
-  activate_apis            = ["logging.googleapis.com", "cloudkms.googleapis.com", "billingbudgets.googleapis.com"]
+#   random_project_id        = true
+#   random_project_id_length = 4
+#   default_service_account  = "deprivilege"
+#   name                     = "${local.project_prefix}-c-kms"
+#   org_id                   = local.org_id
+#   billing_account          = local.billing_account
+#   folder_id                = google_folder.common.id
+#   deletion_policy          = var.project_deletion_policy
+#   activate_apis            = ["logging.googleapis.com", "cloudkms.googleapis.com", "billingbudgets.googleapis.com"]
 
-  labels = {
-    environment       = "common"
-    application_name  = "org-kms"
-    billing_code      = "1234"
-    primary_contact   = "example1"
-    secondary_contact = "example2"
-    business_code     = "shared"
-    env_code          = "c"
-    vpc               = "none"
-  }
+#   labels = {
+#     environment       = "common"
+#     application_name  = "org-kms"
+#     billing_code      = "1234"
+#     primary_contact   = "example1"
+#     secondary_contact = "example2"
+#     business_code     = "shared"
+#     env_code          = "c"
+#     vpc               = "none"
+#   }
 
-  budget_alert_pubsub_topic   = var.project_budget.common_kms_alert_pubsub_topic
-  budget_alert_spent_percents = var.project_budget.common_kms_alert_spent_percents
-  budget_amount               = var.project_budget.common_kms_budget_amount
-  budget_alert_spend_basis    = var.project_budget.common_kms_budget_alert_spend_basis
-}
+#   budget_alert_pubsub_topic   = var.project_budget.common_kms_alert_pubsub_topic
+#   budget_alert_spent_percents = var.project_budget.common_kms_alert_spent_percents
+#   budget_amount               = var.project_budget.common_kms_budget_amount
+#   budget_alert_spend_basis    = var.project_budget.common_kms_budget_alert_spend_basis
+# }
 
 /******************************************
   Project for Org-wide Secrets

@@ -31,7 +31,7 @@ billing_export_dataset_location = "US"
 
 //enable_hub_and_spoke = true
 
-//create_access_context_manager_access_policy = false
+create_access_context_manager_access_policy = false
 
 // Optional - If you are deploying Foundation Example in a parent folder
 // consider using below create_unique_tag_key var because as Tag Keys are

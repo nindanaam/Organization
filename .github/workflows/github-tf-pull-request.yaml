@@ -21,9 +21,9 @@ on:
       - "nonproduction"
 
 env:
-  PROJECT_ID: "prj-b-cicd-wif-gh-d710"
-  TF_BACKEND: ""bkt-prj-b-seed-tfstate-b327""
-  TF_VAR_gh_token: "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"
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  TF_BACKEND: ${{ secrets.TF_BACKEND }}
+  TF_VAR_gh_token: ${{ secrets.TF_VAR_gh_token }}
   TF_IN_AUTOMATION: "true"
 
 jobs:
@@ -42,9 +42,8 @@ jobs:
         uses: "google-github-actions/auth@v2"
         with:
           token_format: "access_token"
-          workload_identity_provider: 'projects/845905647663/locations/global/workloadIdentityPools/github/providers/my-repo'
-          service_account: 'project-service-account@prj-b-cicd-wif-gh-d710.iam.gserviceaccount.com'
-
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
 
       - uses: "google-github-actions/setup-gcloud@v2"
         with:
@@ -71,7 +70,7 @@ jobs:
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         with:
-          github-token: "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"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
